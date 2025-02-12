@@ -45,7 +45,7 @@ Test Flow:
 * pip (24.0) and setuptools
 * [venv](<https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/>) (recommended)
 
-# Instalation
+# Installation
 
 1. Download or clone the repository 
 2. Open a terminal
