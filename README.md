@@ -3,6 +3,7 @@
 This project is designed to automate the testing of the User Registration Page and validate various input scenarios using Selenium WebDriver with Python. The goal is to ensure that the registration form behaves as expected with both valid and invalid inputs and that appropriate error messages are displayed when necessary.
 
 Website Link: https://caustria0202.github.io/Simple-Registration-Page/
+User Credentials: UserCredentials.txt file
 
 Design and Thought Process:
 * Test Coverage: We focused on both positive (valid inputs) and negative (invalid inputs) test cases to ensure the robustness of the registration functionality.
