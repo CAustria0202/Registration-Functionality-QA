@@ -31,7 +31,8 @@ Test Flow:
 1. Correct Credentials: The test enters a valid email and mobile number combination and verifies successful registration.
 2. Incorrect Credentials: The test enters an invalid email or mobile number and checks for failure.
 
-Tools and Technologies Used:
+# Tools and Technologies Used:
+
 * Programming Language: Python
 * Automation Tool: Selenium WebDriver
 * Browser: Google Chrome
@@ -65,4 +66,5 @@ By default, tests will be executed in Chrome (normal mode). Preferences can be c
 # Results
 
 To check the report, open the '/Reports/report.html' file once the execution has finished.
+
 To check the Screenshots, open the '/Screenshot/' folder once the execution has finished.
