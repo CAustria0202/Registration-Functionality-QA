@@ -27,6 +27,9 @@ Potential Issues and Preventive Measures
 | TC08 | Validate registration with special characters in business name | 1. Fill in the business name with special characters <br> 2. Click on the Submit button | Business Name: Juan Lun@ Business! | Error message: "Business name can only contain letters, numbers, spaces, and the symbols (.-,&)" | Validation for business name format |
 | TC09 | Validate registration without agreeing to the privacy policy and terms | 1. Fill in all fields <br> 2. Submit without checking the Privacy Policy and Terms checkbox | - | Error message: "You must agree to the Privacy Policy" <br> "You must agree to the Terms and Conditions" | Validation for checkbox selection |
 
+Test Flow:
+1. Correct Credentials: The test enters a valid email and mobile number combination and verifies successful registration.
+2. Incorrect Credentials: The test enters an invalid email or mobile number and checks for failure.
 
 Tools and Technologies Used:
 * Programming Language: Python
@@ -34,10 +37,6 @@ Tools and Technologies Used:
 * Browser: Google Chrome
 * Testing Framework: Pytest
 * GitHub for version control
-
-Test Flow:
-1. Correct Credentials: The test enters a valid email and mobile number combination and verifies successful registration.
-2. Incorrect Credentials: The test enters an invalid email or mobile number and checks for failure.
 
 # Requirements
 
