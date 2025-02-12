@@ -13,6 +13,21 @@ Potential Issues and Preventive Measures
 * Special character handling: Tested to prevent security vulnerabilities.
 * Dropdown validation: Avoids selecting default or placeholder values.
 
+# Test Case Table
+
+| **Test Case ID** | **Test Case Description** | **Test Steps** | **Test Data** | **Expected Result** | **Remarks** |
+|------------------|---------------------------|----------------|---------------|---------------------|-------------|
+| TC01 | Validate successful registration with valid credentials | 1. Fill in all fields with valid data <br> 2. Click on the Submit button | First Name: John <br> Last Name: Doe <br> Email: valid_user@example.com <br> Mobile: 09088175555 <br> Business Name: Juan Luna Business <br> Industry: Retail <br> Province: Pampanga <br> City: San Fernando <br> Zip: 2307 | "Your Registration is Successful!" | Successful registration confirmation |
+| TC02 | Validate registration with valid email and invalid mobile number | 1. Fill in all fields with valid data except mobile number <br> 2. Click on the Submit button | Email: valid_user@example.com <br> Mobile: +6390881755556 | Error message: "Enter a valid 11-digit mobile number starting with 09" | Mobile number format validation |
+| TC03 | Validate registration with invalid email and valid mobile number | 1. Fill in all fields with valid data except email <br> 2. Click on the Submit button | Email: invalid_user@example <br> Mobile: 09088175555 | Error message: "Enter a valid email address (e.g., user@example.com)" | Email format validation |
+| TC04 | Validate registration with non-registered email and valid mobile number | 1. Fill in all fields with a non-registered email <br> 2. Click on the Submit button | Email: invalid_user@example.com <br> Mobile: 09088175555 | Alert: "FAIL: Invalid credentials. Please enter the correct email and phone number." | Validation for unregistered email |
+| TC05 | Validate registration with empty email and phone number | 1. Leave email and phone fields blank <br> 2. Click on the Submit button | Email: (empty) <br> Mobile: (empty) | Error message: "Please input your email address" <br> "Please input your mobile number" | Validation for required fields |
+| TC06 | Validate registration with special characters in email and phone number | 1. Fill in email and phone number fields with special characters <br> 2. Click on the Submit button | Email: !@#user@#$%^ <br> Mobile: !@#user@#$%^ | Error message: "Enter a valid email address" <br> "Enter a valid 11-digit mobile number" | Validation for special characters |
+| TC07 | Validate registration with empty business information fields | 1. Leave business information fields blank <br> 2. Click on the Submit button | Business Name: (empty) <br> Industry: (empty) <br> Address: (empty) <br> Province: (empty) <br> City: (empty) <br> Zip: (empty) | Error messages for each field: <br> "Please input your business name" <br> "Select an industry type" <br> "Enter your address" <br> "Enter your province" <br> "Enter your city/municipality" <br> "Enter a valid 4-5 digit zip code" | Validation for all required business fields |
+| TC08 | Validate registration with special characters in business name | 1. Fill in the business name with special characters <br> 2. Click on the Submit button | Business Name: Juan Lun@ Business! | Error message: "Business name can only contain letters, numbers, spaces, and the symbols (.-,&)" | Validation for business name format |
+| TC09 | Validate registration without agreeing to the privacy policy and terms | 1. Fill in all fields <br> 2. Submit without checking the Privacy Policy and Terms checkbox | - | Error message: "You must agree to the Privacy Policy" <br> "You must agree to the Terms and Conditions" | Validation for checkbox selection |
+
+
 Tools and Technologies Used:
 * Programming Language: Python
 * Automation Tool: Selenium WebDriver
