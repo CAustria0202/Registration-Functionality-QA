@@ -27,9 +27,11 @@ def get_config():
         raise FileNotFoundError(f"Config file not found at: {config_path}")
 
     config.read(config_path)
-    browser = config.get("settings", "browser", fallback="chrome")
-    url = config.get("settings", "url", fallback="https://google.com/")
-    head = config.getboolean("settings", "head", fallback=False)
+
+    #Added os.getenv for adding parametization option when using Jenkins
+    browser = os.getenv('BROWSER', config.get("settings", "browser", fallback="chrome"))
+    url = os.getenv('URL', config.get("settings", "url", fallback="https://google.com/"))
+    head = os.getenv('HEADLESS', config.getboolean("settings", "head", fallback=False))
 
     print(f"Selected browser: {browser}")
     print(f"Selected URL: {url}")
