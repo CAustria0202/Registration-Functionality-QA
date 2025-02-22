@@ -107,66 +107,53 @@ class RegistrationPage(BaseDriver):
     def enter_firstname(self, fname):
         self.firstname().click()
         self.firstname().send_keys(fname)
-        time.sleep(1)
 
     def enter_lastname(self, lname):
         self.lastname().click()
         self.lastname().send_keys(lname)
-        time.sleep(1)
 
     def enter_email(self, emailadd):
         self.email().click()
         self.email().send_keys(emailadd)
-        time.sleep(1)
 
     def enter_mobile(self, mob):
         self.mobile().click()
         self.mobile().send_keys(mob)
-        time.sleep(1)
 
     def enter_business(self, bus):
         self.business().click()
         self.business().send_keys(bus)
-        time.sleep(1)
 
     def enter_industry(self, text):
         drp = self.industry()
         drp.click()
         drop_down = Select(drp)
         drop_down.select_by_visible_text(text)
-        time.sleep(1)
 
     def enter_addr(self, addr):
         self.address().click()
         self.address().send_keys(addr)
-        time.sleep(1)
 
     def enter_province(self, prov):
         self.province().click()
         self.province().send_keys(prov)
-        time.sleep(1)
 
     def enter_city(self, cty):
         self.city().click()
         self.city().send_keys(cty)
-        time.sleep(1)
 
     def enter_zip(self, zp):
         self.zip().click()
         self.zip().send_keys(zp)
-        time.sleep(1)
 
     def enter_privacy(self):
         self.priv().click()
-        time.sleep(1)
 
     def enter_terms(self):
         self.terms().click()
-        time.sleep(1)
 
     def enter_submit(self):
         self.submit_button().click()
-        time.sleep(1)
 
     # Consolidated individual form field entry methods into one method to reduce code repetition.
     # This method calls all the necessary input functions and submits the form with the provided data.
