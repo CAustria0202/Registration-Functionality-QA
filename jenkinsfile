@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    parameters{
+        choice(name: 'BROWSER', choices: ['chrome','chromium','firefox','edge'])
+        choice(name: 'HEADLESS', choices: ['true','false'])
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '8001fa7a-33e2-4899-abd1-4074c876d493', url: 'https://github.com/CAustria0202/Registration-Functionality-QA.git']])
+            }
+        }
+        stage('Build') {
+            steps {
+                git branch: 'main', credentialsId: '8001fa7a-33e2-4899-abd1-4074c876d493', url: 'https://github.com/CAustria0202/Registration-Functionality-QA.git'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'pytest -v --html=Reports/report.html --self-contained-html'
+            }
+        }
+    }
+}
