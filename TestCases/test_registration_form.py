@@ -28,16 +28,11 @@ class TestVerifyRegistrationForm:
         success_register = self.ty_page.successful_message().text
         self.utils.assert_element_text(success_register, "Your Registration is Successful!")
 
-        # Take a screenshot of the successful registration
-        self.utils.take_screenshot(filename_prefix="test_valid_credentials")
-
     # Test case for valid email but invalid phone number
     def test_valid_email_invalid_number(self):
         self.reg_page.click_submit("John", "Doe", "valid_user@example.com", "+6390881755556", "Juan Luna Business", "Retail", "Kalayaan St.", "Pampanga", "San Fernando", "2307")
         error_message = self.reg_page.mobile_err2().text
         self.utils.assert_element_text(error_message, "Enter a valid 11-digit mobile number starting with 09", "Mobile Number error message mismatch")
-
-        self.utils.take_screenshot(filename_prefix="test_valid_email_invalid_number")
 
     # Test case for invalid email and valid phone number
     def test_invalid_email_valid_number(self):
@@ -45,14 +40,10 @@ class TestVerifyRegistrationForm:
         error_message = self.reg_page.email_err2().text
         self.utils.assert_element_text(error_message, "Enter a valid email address (e.g., user@example.com)", "Email Address error message mismatch")
 
-        self.utils.take_screenshot(filename_prefix="test_invalid_email_valid_number")
-
     # Test case for not registered email but valid phone number
     def test_not_registered_email_valid_number(self):
         self.reg_page.click_submit("John", "Doe", "invalid_user@example.com", "09088175555", "Juan Luna Business", "Retail", "Kalayaan St.", "Pampanga", "San Fernando", "2307")
         self.utils.verify_alert(self.driver, "FAIL: Invalid credentials. Please enter the correct email and phone number.")
-
-        self.utils.take_screenshot(filename_prefix="test_not_registered_email_valid_number")
 
     # Test case for empty email and phone number
     def test_empty_email_and_phone(self):
@@ -62,8 +53,6 @@ class TestVerifyRegistrationForm:
         self.utils.assert_element_text(error_message1, "Please input your email address", "Email Address error message mismatch")
         self.utils.assert_element_text(error_message2, "Please input your mobile number", "Mobile Number error message mismatch")
 
-        self.utils.take_screenshot(filename_prefix="test_empty_email_and_phone")
-
     # Test case for special characters in email and phone fields
     def test_special_characters_email_phone(self):
         self.reg_page.click_submit("John", "Doe", "!@#user@#$%^", "!@#user@#$%^", "Juan Luna Business", "Retail", "Kalayaan St.", "Pampanga", "San Fernando", "2307")
@@ -71,8 +60,6 @@ class TestVerifyRegistrationForm:
         error_message2 = self.reg_page.mobile_err2().text
         self.utils.assert_element_text(error_message1, "Enter a valid email address (e.g., user@example.com)", "Email Address error message mismatch")
         self.utils.assert_element_text(error_message2, "Enter a valid 11-digit mobile number starting with 09", "Mobile Number error message mismatch")
-
-        self.utils.take_screenshot(filename_prefix="test_special_characters_email_phone")
 
     # Test case for empty inputs on business information fields
     def test_empty_input_on_business_information(self):
@@ -90,15 +77,11 @@ class TestVerifyRegistrationForm:
         self.utils.assert_element_text(error_message5, "Enter your city/municipality", "City/Municipality error message mismatch")
         self.utils.assert_element_text(error_message6, "Enter a valid 4-5 digit zip code", "Zip code error message mismatch")
 
-        self.utils.take_screenshot(filename_prefix="test_empty_input_on_business_information")
-
     # Test case for special characters in business name
     def test_special_characters_business_name(self):
         self.reg_page.click_submit("John", "Doe", "valid_user@example.com", "09088175555", "Juan Lun@ Business!", "Retail", "Kalayaan St.", "Pampanga", "San Fernando", "2307")
         error_message1 = self.reg_page.business_err2().text
         self.utils.assert_element_text(error_message1, "Business name can only contain letters, numbers, spaces, and the symbols (.-,&)", "Business Name error message mismatch")
-
-        self.utils.take_screenshot(filename_prefix="test_special_characters_business_name")
 
     # Test case for submitting the form without agreeing to privacy policy and terms
     def test_submit_by_not_clicking_checkbox(self):
@@ -107,5 +90,3 @@ class TestVerifyRegistrationForm:
         error_message2 = self.reg_page.terms_err().text
         self.utils.assert_element_text(error_message1, "You must agree to the Privacy Policy", "Privacy Policy error message mismatch")
         self.utils.assert_element_text(error_message2, "You must agree to the Terms and Conditions", "Terms and Conditions error message mismatch")
-
-        self.utils.take_screenshot(filename_prefix="test_submit_by_not_clicking_checkbox")
