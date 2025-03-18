@@ -1,4 +1,5 @@
 import os
+import time
 import pytest
 import configparser
 from selenium import webdriver
@@ -75,3 +76,23 @@ def setup(request):
         request.cls.driver = driver
         yield
         driver.quit()
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, directory="Screenshot" ,filename_prefix="screenshot"):
+    outcome = yield
+    report = outcome.get_result()
+
+    # If test fails during the "call" phase, take a screenshot
+    if report.when == "call" and report.failed:
+        driver = getattr(item.cls, "driver", None)  # Get driver from test context
+        if driver:
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Project root directory
+            screenshot_dir = os.path.join(base_dir, directory)
+
+            if not os.path.exists(screenshot_dir):
+                os.makedirs(screenshot_dir)
+
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_path = os.path.join(screenshot_dir, f"failed_{filename_prefix}_{timestamp}.png")
+            driver.save_screenshot(screenshot_path)
+            print(f"🔥 Screenshot taken on failure: {screenshot_path}")
