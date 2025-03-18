@@ -30,21 +30,25 @@ class Utils(BaseDriver):
         except Exception as e:
             print(f"Page did not load within {timeout} seconds: {e}")
 
-    # Take a screenshot and save it in the specified directory
-    def take_screenshot(self, directory="Screenshot", filename_prefix="screenshot"):
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Project root directory
-        screenshot_dir = os.path.join(base_dir, directory)
+    # # Take a screenshot and save it in the specified directory
+    # def take_screenshot(self, directory="Screenshot", filename_prefix="screenshot"):
+    #     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Project root directory
+    #     screenshot_dir = os.path.join(base_dir, directory)
+    #
+    #     if not os.path.exists(screenshot_dir):
+    #         os.makedirs(screenshot_dir)
+    #
+    #     timestamp = time.strftime("%Y%m%d-%H%M%S")
+    #     screenshot_name = os.path.join(screenshot_dir, f"{filename_prefix}_{timestamp}.png")
+    #
+    #     if self.driver:
+    #         self.driver.save_screenshot(screenshot_name)
+    #         print(f"Screenshot saved at: {os.path.abspath(screenshot_name)}")
+    #     else:
+    #         print("Driver not initialized. Screenshot not taken.")
+    #
+    #     print(f"Saving screenshot to: {os.path.abspath(screenshot_name)}")
 
-        if not os.path.exists(screenshot_dir):
-            os.makedirs(screenshot_dir)
-
-        timestamp = time.strftime("%Y%m%d-%H%M%S")
-        screenshot_name = os.path.join(screenshot_dir, f"{filename_prefix}_{timestamp}.png")
-
-        if self.driver:
-            self.driver.save_screenshot(screenshot_name)
-            print(f"Screenshot saved at: {os.path.abspath(screenshot_name)}")
-        else:
-            print("Driver not initialized. Screenshot not taken.")
-
-        print(f"Saving screenshot to: {os.path.abspath(screenshot_name)}")
+        # Example Test
+        # Take a screenshot of the successful registration
+        # self.utils.take_screenshot(filename_prefix="test_valid_credentials")
